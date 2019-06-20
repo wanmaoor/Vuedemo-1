@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+  <style>
+    .is-loading{
+      background-color: red;
+      outline: none;
+      border: none;
+      color: #fff;
+    }
+    h1{
+      text-align: center;
+      color: green;
+      font-size: 1.5rem;
+    }
+    .title{
+      font-size: 1.2rem;
+      color: red;
+    }
+    .message{
+      width: 50%;
+    }
+    #app5{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h1>v-model 双向绑定</h1>
+  <span class="title">APP:</span>
+  <div id="app" class="container">
+    <p>{{ message }}</p>
+    <input type="text" v-model.lazy="message">
+  </div>
+  
+  <hr>
+
+  <span class="title">APP1:</span>
+  <div id="app1" class="container">
+    <ul>
+      <li v-for="name in names" v-text="name"></li>
+    </ul>
+    <input id="input" type="text" v-model="newName">
+    <button @click="push">add name</button>
+    <button @click="pop">remove name</button>
+  </div>
+  <hr>
+
+  <h1>class的绑定</h1>
+  <span class="title">APP2:</span>
+  <div id="app2" class="container">
+    <button :class="{'is-loading': isLoading}" @click="toggleClass">Click me</button>
+  </div>
+  <hr>
+  
+
+  <span class="title">APP3:</span>
+  <div id="app3" class="container">
+    <h1>completed tasks</h1>
+    <ul>
+      <li v-for="task in completed" v-text="task.description"></li>
+    </ul>
+    <h1>incompleted tasks</h1>
+    <ul>
+      <li v-for="task in incompleted" v-text="task.description"></li>
+    </ul>
+  </div>
+  <hr>
+
+  <h1>component</h1>
+  <span class="title">APP4:</span>
+  <div id="app4" class="container">
+    <tasklist></tasklist>
+  </div>
+  <hr>
+
+  <span class="title">APP5:</span>
+  <div id="app5" >
+    <message title="Hello World" body="Lorem ipsum dolar sit amet."></message>
+    <message title="Hello Universe" body="Bla Bla Bla."></message>
+  </div>
+  <hr>
+
+  <span class="title">APP6:</span>
+  <div id="app6" class="container">
+    <modal v-show="showModal" @close="togglemodal"></modal>
+    <button @click="togglemodal">Show Modal</button>
+  </div>
+  <hr>
+
+  <span class="title">APP7:</span>
+  <div id="app7" class="container">
+    <tabs>
+      <tab name="About Us" :selected="true">
+        <h1>eat</h1>
+      </tab>
+      <tab name="About Our Culture">
+        <h1>drink</h1>
+      </tab>
+      <tab name="About Our Vision">
+        <h1>sleep</h1>
+      </tab>
+    </tabs>
+  </div>
+  <hr>
+
+  <span class="title">APP8:</span>
+  <div id="app8" class="container">
+    <coupon @applied="onCouponApplied"></coupon>
+    <h1 v-if="couponApplied">You used a coupon!</h1>
+  </div>
+  <hr>
+
+  <span class="title">APP9:</span>
+  <div id="app9" class="container" v-show="isVisible">
+    <complex-modal @close="close">
+      <template slot="header">My Title</template>
+      there are some text to fill with the blank here
+      <template slot="footer">
+        
+      </template>
+    </complex-modal>
+  </div>
+  <hr>
+
+  <span class="title">APP10:</span>
+  <div id="app10" class="container">
+    <progressed inline-template>
+      <div>
+        the ammount of pigs :{{ amount }}
+        <button @click="amount += 1">add pig</button>
+    </div>
+    </progressed>
+  </div>
+  <hr>
+
+  <span class="title">APP11:</span>
+  <div id="app11" class="container">
+    <input  v-focus>
+  </div>
+  <hr>
+  <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
