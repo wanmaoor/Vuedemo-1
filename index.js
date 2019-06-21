@@ -279,7 +279,7 @@ Vue.component('complex-modal', {
 let app9 = new Vue({
   el: "#app9",
   data: {
-    isVisible: true
+    isVisible: false
   },
   methods: {
     close(){
@@ -300,100 +300,6 @@ new Vue({
   el: "#app10"
 })
 
-//mixin
-let myMixin = {
-  created(){
-    this.hello()
-  },
-  methods: {
-    hello(){
-      console.log('hello from mixin');
-    }
-  }
-}
-
-let Component = Vue.extend({
-  mixins: [myMixin]
-})
-let component = new Component()
-
-//mixin merge
-
-//merge object, so does in methods, components and directives, instance option will take priority
-let dataMixin = {
-  data(){
-    return {
-      message: "hello",
-      foo: 'abc'
-    }
-  }
-}
-
-new Vue({
-  mixins: [dataMixin],
-  data(){
-    return {
-      message: 'goodbye',// goodbye will replace hello to become the value of message
-      bar: 'def'
-    }
-  },
-  created(){
-    console.log(this.$data);
-    
-  }
-})
-
-//merge life cycle
-
-//mounted does'nt show
-let functionMixin = {
-  created(){
-    console.log('mixin hook called in created');
-    
-  },
-  mounted(){
-    console.log('mix in hook called in mounted');
-  }
-}
-
-new Vue({
-  mixins: [functionMixin],
-  created(){
-    console.log('component hook called in created ');
-  }, 
-  mounted(){
-    console.log('component hook called in mounted');
-    
-  }
-})
-
-//global mixin
-//when all instances need  common hooks, methods or objects, you can use global mixin to
-//reduce repeatedly write same codes, but with caution when use it
-Vue.mixin({
-  created(){
-    let myOption = this.$options.myOption
-    if (myOption) {
-      console.log(myOption);
-      
-    }
-  }
-})
-
-new Vue({
-  myOption: 'I\'m 1st option'
-})
-
-new Vue({
-  myOption: 'I\'m 2nd option'
-})
-
-//custom option merge strategy
-
-Vue.config.optionMergeStrategies.myOwnOption = (toVal, fromVal)=>{
-  // what you want to do
-}
-
 //custom directives
 Vue.directive('focus', {
   inserted(el){
@@ -405,3 +311,16 @@ Vue.directive('focus', {
 new Vue({
   el: "#app11"
 })
+
+// extends
+var authorExtend = Vue.extend({
+  template:`<p><a :href='authorURL'>{{authorName}}</a></p>`,
+  data: function(){
+    return {
+      authorName: "Joe",
+      authorURL: "https://baidu.com"
+    }
+  }
+})
+
+new authorExtend().$mount('author')

@@ -8,3 +8,5 @@
 - tab組件
 - modal組件
 - slot插槽
+- 全局自定義指令
+- 全局extends實例構造器

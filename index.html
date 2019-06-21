@@ -123,6 +123,7 @@
   <hr>
 
   <span class="title">APP9:</span>
+  <P>要顯示ap9需要把isVisble改爲true</P>
   <div id="app9" class="container" v-show="isVisible">
     <complex-modal @close="close">
       <template slot="header">My Title</template>
@@ -146,8 +147,17 @@
   <hr>
 
   <span class="title">APP11:</span>
+  <h1>自定義指令</h1>
+  <p>自定義focus指令, 使其無需點擊自動將input輸入框進入focus狀態</p>
   <div id="app11" class="container">
     <input  v-focus>
+  </div>
+  <hr>
+
+  <span class="title">APP12:</span>
+  <h1>extends</h1>
+  <div class="app12">
+    <author></author>
   </div>
   <hr>
   <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
