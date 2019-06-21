@@ -343,3 +343,45 @@ function add() {
   // app13.arr[1] = 'ddd' //改變下標的值並沒有觸發Vue對於VirtualDOM的更新
   Vue.set(app13.arr, '1', 'dd') //使用Vue.set()方法, 更新virtualDOM
 }
+
+let app14 = new Vue({
+  el: "#app14",
+  data: {
+    num: 0
+  },
+  methods: {
+    addOne(){
+      this.num++
+    }
+  },
+  beforeCreate() {
+    console.log('1 - beforeCreate 初始化前')
+  },
+  created(){
+    console.log('2 - created 创建完成');
+  },
+  beforeMount() {
+    console.log('3 - beforeMount 挂载之前')
+  },
+  mounted(){
+    console.log('4 - mounted 挂载之后')
+  },
+  beforeUpdate() {
+    console.log('5 - beforeUpdate 更新之前')
+  },
+  updated(){
+    console.log('6 - updated 更新之后')
+  },
+  activated() {
+    console.log('7 - actived');
+  },
+  deactivated() {
+    console.log('8 - deactived')
+  },
+  beforeDestroy() {
+    console.log('9 - beforeDestroy 销毁之前')
+  },
+  destroyed() {
+    console.log('10 - destroyed 销毁之后')
+  },
+})

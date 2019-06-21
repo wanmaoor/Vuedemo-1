@@ -181,6 +181,13 @@
     <button onclick="add()">click me</button>
   </div>
   <hr>
+  <span class="title">APP14</span>
+  <h1>Life Cycle</h1>
+  <div id="app14" class="container">
+    <p>{{num}}</p>
+    <button @click="addOne">click me</button>
+  </div>
+  <button onclick="app14.$destroy()">销毁app14</button>
   <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
   <script src="./index.js"></script>
 </body>
