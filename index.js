@@ -385,3 +385,19 @@ let app14 = new Vue({
     console.log('10 - destroyed 销毁之后')
   },
 })
+
+//Props
+Vue.component('blog-post', {
+  props: ['title'],
+  template: `
+    <h2>{{title}}</h2>
+  `
+})
+let app15 = new Vue({
+  el: "#app15",
+  data: {
+    post: {
+      title: '這段内容是動態綁定Props的文字'
+    }
+  }
+})

@@ -188,6 +188,13 @@
     <button @click="addOne">click me</button>
   </div>
   <button onclick="app14.$destroy()">销毁app14</button>
+  <hr>
+
+  <span class="title">APP15</span>
+  <h1>Props</h1>
+  <div id="app15" class="container">
+    <blog-post :title="post.title"></blog-post>
+  </div>
   <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
   <script src="./index.js"></script>
 </body>
