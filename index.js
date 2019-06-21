@@ -300,7 +300,7 @@ new Vue({
   el: "#app10"
 })
 
-//custom directives
+//全局指令: directives
 Vue.directive('focus', {
   inserted(el){
     el.focus()
@@ -312,7 +312,7 @@ new Vue({
   el: "#app11"
 })
 
-// extends
+// 全局指令: extends
 var authorExtend = Vue.extend({
   template:`<p><a :href='authorURL'>{{authorName}}</a></p>`,
   data: function(){
@@ -322,5 +322,24 @@ var authorExtend = Vue.extend({
     }
   }
 })
-
+// 挂載
 new authorExtend().$mount('author')
+
+// 全局指令: set
+
+let outData = {
+  n: 0,
+  arr: ['aaa', 'bbb', 'ccc']
+}
+
+let app13 = new Vue({
+  el: "#app13",
+  data: outData
+})
+
+function add() {
+  // app13.n++
+  // Vue.set(outData,'n', 34 )
+  // app13.arr[1] = 'ddd' //改變下標的值並沒有觸發Vue對於VirtualDOM的更新
+  Vue.set(app13.arr, '1', 'dd') //使用Vue.set()方法, 更新virtualDOM
+}

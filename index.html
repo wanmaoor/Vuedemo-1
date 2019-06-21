@@ -33,6 +33,16 @@
       align-items: center;
 
     }
+    .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    p{
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -147,7 +157,7 @@
   <hr>
 
   <span class="title">APP11:</span>
-  <h1>自定義指令</h1>
+  <h1>Vue.directives()</h1>
   <p>自定義focus指令, 使其無需點擊自動將input輸入框進入focus狀態</p>
   <div id="app11" class="container">
     <input  v-focus>
@@ -155,9 +165,20 @@
   <hr>
 
   <span class="title">APP12:</span>
-  <h1>extends</h1>
-  <div class="app12">
+  <h1>Vue.extends()</h1>
+  <div class="app12" class="container">
     <author></author>
+  </div>
+  <hr>
+
+  <span class="title">APP13:</span>
+  <h1>Vue.set()</h1>
+  <div id="app13" class="container">
+    <p>數字: {{n}}</p>
+    <ul>
+      <li v-for="item in arr">{{item}}</li>
+    </ul>
+    <button onclick="add()">click me</button>
   </div>
   <hr>
   <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
