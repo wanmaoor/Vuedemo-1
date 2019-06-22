@@ -3,24 +3,23 @@
 new Vue({
   el: "#app",
   data: {
-    message: 'input something'
+    message: "input something"
   }
-})
-
+});
 
 let app1 = new Vue({
   el: "#app1",
   data: {
-    newName: '',
-    names: ['Jack', 'Susan', 'Lee', 'Michael']
+    newName: "",
+    names: ["Jack", "Susan", "Lee", "Michael"]
   },
   methods: {
     push() {
-      this.names.push(this.newName)
-      this.newName = ''
+      this.names.push(this.newName);
+      this.newName = "";
     },
     pop() {
-      this.names.pop(this.names[this.names.length - 1])
+      this.names.pop(this.names[this.names.length - 1]);
     }
   }
   // mounted() {
@@ -30,7 +29,7 @@ let app1 = new Vue({
   //     name.value = ''
   //   })
   // }
-})
+});
 
 let app2 = new Vue({
   el: "#app2",
@@ -40,39 +39,40 @@ let app2 = new Vue({
   },
   methods: {
     toggleClass() {
-      this.isLoading = !this.isLoading
+      this.isLoading = !this.isLoading;
     }
   }
-})
+});
 
 let app3 = new Vue({
   el: "#app3",
   data: {
-    tasks: [{
-        description: 'eat',
+    tasks: [
+      {
+        description: "eat",
         completed: true
       },
       {
-        description: 'drink',
+        description: "drink",
         completed: false
       },
       {
-        description: 'sleep',
+        description: "sleep",
         completed: false
       }
     ]
   },
   computed: {
     incompleted() {
-      return this.tasks.filter(task => !task.completed)
+      return this.tasks.filter(task => !task.completed);
     },
-    completed(){
-      return this.tasks.filter(task => task.completed)
+    completed() {
+      return this.tasks.filter(task => task.completed);
     }
   }
-})
+});
 //component
-Vue.component('tasklist', {
+Vue.component("tasklist", {
   template: `
   <div>
     <task v-for="task in tasks" :key="task.id">{{ task.task }}</task>
@@ -80,42 +80,42 @@ Vue.component('tasklist', {
   `,
   data() {
     return {
-      tasks: [{
+      tasks: [
+        {
           id: 1,
-          task: 'eat',
+          task: "eat",
           completed: true
         },
         {
           id: 2,
-          task: 'drink',
+          task: "drink",
           completed: false
         },
         {
           id: 3,
-          task: 'sleep',
+          task: "sleep",
           completed: false
         }
       ]
-    }
+    };
   }
-})
-Vue.component('task', {
+});
+Vue.component("task", {
   template: `
     <li><slot></slot></li>
   `
-})
+});
 let app4 = new Vue({
   el: "#app4",
   data: {}
-})
+});
 
-
-Vue.component('message', {
-  props: ['title', 'body'],
-  data(){
+Vue.component("message", {
+  props: ["title", "body"],
+  data() {
     return {
       isVisible: true
-    }
+    };
   },
   template: `
   <article class="message" v-show="isVisible">
@@ -129,17 +129,17 @@ Vue.component('message', {
   </article>
   `,
   methods: {
-    hideModal(){
-      return this.isVisible = !this.isVisible
+    hideModal() {
+      return (this.isVisible = !this.isVisible);
     }
   }
-})
+});
 
 let app5 = new Vue({
-  el: "#app5",
-})
+  el: "#app5"
+});
 
-Vue.component('modal', {
+Vue.component("modal", {
   template: `
   <div class="modal is-active">
   <div class="modal-background"></div>
@@ -153,21 +153,21 @@ Vue.component('modal', {
   <button class="modal-close is-large" aria-label="close" @click="$emit('close')"></button>
 </div>
   `
-})
+});
 let app6 = new Vue({
   el: "#app6",
   data: {
     showModal: false
   },
   methods: {
-    togglemodal(){
-      return this.showModal = !this.showModal
+    togglemodal() {
+      return (this.showModal = !this.showModal);
     }
   }
-})
+});
 
 //tabs component
-Vue.component('tabs', {
+Vue.component("tabs", {
   template: `
   <div>
     <div class="tabs">
@@ -182,24 +182,24 @@ Vue.component('tabs', {
     </div>
   </div>
   `,
-  data(){
+  data() {
     return {
       tabs: []
-    }
+    };
   },
-  created(){
-    this.tabs = this.$children
+  created() {
+    this.tabs = this.$children;
   },
   methods: {
-    selectTab(selectTab){
+    selectTab(selectTab) {
       this.tabs.forEach(tab => {
-        tab.isActive = (tab.name === selectTab.name)
-      })
+        tab.isActive = tab.name === selectTab.name;
+      });
     }
   }
-})
+});
 
-Vue.component('tab', {
+Vue.component("tab", {
   template: `
     <div v-show="isActive"><slot></slot></div>
   `,
@@ -208,51 +208,52 @@ Vue.component('tab', {
     selected: false
   },
   computed: {
-    href(){
-      return '#' + this.name.toLowerCase().replace(/ /g, '-')
+    href() {
+      return "#" + this.name.toLowerCase().replace(/ /g, "-");
     }
   },
-  data(){
+  data() {
     return {
       isActive: false
-    }
+    };
   },
   mounted() {
-    this.isActive = this.selected
-  },
-})
+    this.isActive = this.selected;
+  }
+});
 let app7 = new Vue({
-  el: "#app7",
-
-})
+  el: "#app7"
+});
 
 //component communication
-window.Event = new Vue()
-Vue.component('coupon', {
+window.Event = new Vue();
+Vue.component("coupon", {
   template: `<input placeholder="Enter coupon code" @blur="onCouponApplied">`,
   methods: {
-    onCouponApplied(){
-      Event.$emit('applied')
+    onCouponApplied() {
+      Event.$emit("applied");
     }
   }
-})
+});
 let app8 = new Vue({
   el: "#app8",
   data: {
     couponApplied: false
   },
   methods: {
-    onCouponApplied(){
-      this.couponApplied = true
+    onCouponApplied() {
+      this.couponApplied = true;
     }
   },
-  created(){
-    Event.$on('applied', ()=>{alert('Handing it!')})
+  created() {
+    Event.$on("applied", () => {
+      alert("Handing it!");
+    });
   }
-})
+});
 
 //slots component
-Vue.component('complex-modal', {
+Vue.component("complex-modal", {
   template: `
   <div class="modal is-active">
     <div class="modal-background"></div>
@@ -275,73 +276,73 @@ Vue.component('complex-modal', {
     </div>
   </div>  
   `
-})
+});
 let app9 = new Vue({
   el: "#app9",
   data: {
     isVisible: false
   },
   methods: {
-    close(){
-      this.isVisible = !this.isVisible
+    close() {
+      this.isVisible = !this.isVisible;
     }
   }
-})
+});
 
 //inline template
-Vue.component('progressed', {
-  data(){
+Vue.component("progressed", {
+  data() {
     return {
       amount: 10
-    }
+    };
   }
-})
+});
 new Vue({
   el: "#app10"
-})
+});
 
 //全局指令: directives
-Vue.directive('focus', {
-  inserted(el){
-    el.focus()
+Vue.directive("focus", {
+  inserted(el) {
+    el.focus();
     //el is <input >
   }
-})
+});
 
 new Vue({
   el: "#app11"
-})
+});
 
 // 全局指令: extends
 var authorExtend = Vue.extend({
-  template:`<p><a :href='authorURL'>{{authorName}}</a></p>`,
-  data: function(){
+  template: `<p><a :href='authorURL'>{{authorName}}</a></p>`,
+  data: function() {
     return {
       authorName: "Joe",
       authorURL: "https://baidu.com"
-    }
+    };
   }
-})
+});
 // 挂載
-new authorExtend().$mount('author')
+new authorExtend().$mount("author");
 
 // 全局指令: set
 
 let outData = {
   n: 0,
-  arr: ['aaa', 'bbb', 'ccc']
-}
+  arr: ["aaa", "bbb", "ccc"]
+};
 
 let app13 = new Vue({
   el: "#app13",
   data: outData
-})
+});
 
 function add() {
   // app13.n++
   // Vue.set(outData,'n', 34 )
   // app13.arr[1] = 'ddd' //改變下標的值並沒有觸發Vue對於VirtualDOM的更新
-  Vue.set(app13.arr, '1', 'dd') //使用Vue.set()方法, 更新virtualDOM
+  Vue.set(app13.arr, "1", "dd"); //使用Vue.set()方法, 更新virtualDOM
 }
 
 let app14 = new Vue({
@@ -350,54 +351,62 @@ let app14 = new Vue({
     num: 0
   },
   methods: {
-    addOne(){
-      this.num++
+    addOne() {
+      this.num++;
     }
   },
   beforeCreate() {
-    console.log('1 - beforeCreate 初始化前')
+    console.log("1 - beforeCreate 初始化前");
   },
-  created(){
-    console.log('2 - created 创建完成');
+  created() {
+    console.log("2 - created 创建完成");
   },
   beforeMount() {
-    console.log('3 - beforeMount 挂载之前')
+    console.log("3 - beforeMount 挂载之前");
   },
-  mounted(){
-    console.log('4 - mounted 挂载之后')
+  mounted() {
+    console.log("4 - mounted 挂载之后");
   },
   beforeUpdate() {
-    console.log('5 - beforeUpdate 更新之前')
+    console.log("5 - beforeUpdate 更新之前");
   },
-  updated(){
-    console.log('6 - updated 更新之后')
+  updated() {
+    console.log("6 - updated 更新之后");
   },
   activated() {
-    console.log('7 - actived');
+    console.log("7 - actived");
   },
   deactivated() {
-    console.log('8 - deactived')
+    console.log("8 - deactived");
   },
   beforeDestroy() {
-    console.log('9 - beforeDestroy 销毁之前')
+    console.log("9 - beforeDestroy 销毁之前");
   },
   destroyed() {
-    console.log('10 - destroyed 销毁之后')
-  },
-})
+    console.log("10 - destroyed 销毁之后");
+  }
+});
 
 //Props
-Vue.component('blog-post', {
-  props: ['title'],
+Vue.component("blog-post", {
+  props: ["title"],
   template: `
     <h2>{{title}}</h2>
   `
-})
+});
 let app15 = new Vue({
   el: "#app15",
   data: {
     post: {
-      title: '這段内容是動態綁定Props的文字'
+      title: "這段内容是動態綁定Props的文字"
     }
   }
-})
+});
+
+let Header = Vue.extend({
+  template: `<p>{{msg}} - {{propsData}}</p>`,
+  data: () => ({ msg: "使用extend指令生成内容" }),
+  props: ['propsData']
+});
+let val = '使用propsData生成内容'
+new Header({propsData: {propsData: val}}).$mount("#header");

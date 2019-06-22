@@ -13,3 +13,4 @@
 - Vue.set()
 - 初步生命周期
 - 初步Props
+- propsData
