@@ -469,5 +469,8 @@ new Vue({
       this.num++
     }
   },
+  updated() {
+    console.log(`作爲原生updated鈎子,我比Mixins要后執行`)
+  },
   mixins: [updateValue]
 })
