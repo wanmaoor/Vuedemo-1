@@ -410,3 +410,18 @@ let Header = Vue.extend({
 });
 let val = '使用propsData生成内容'
 new Header({propsData: {propsData: val}}).$mount("#header");
+
+new Vue({
+  el: "#app17",
+  data: {
+    price: {
+      pounds: 9,
+      pence: 15
+    }
+  },
+  computed: {
+    newPrice: function(){
+      return ` ￡${this.price.pounds}, ${this.price.pence} Pence `
+    }
+  }
+})
