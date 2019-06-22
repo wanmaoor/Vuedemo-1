@@ -15,3 +15,4 @@
 - 初步`Props`
 - `propsData`
 - 計算屬性
+- `watch`屬性

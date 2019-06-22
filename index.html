@@ -209,6 +209,17 @@
     <p>襯衫的價格為: {{ newPrice }}</p>
   </div>
   <hr>
+  <span class="title">APP18:</span>
+  <h1>穿衣建議</h1>
+  <div id="app18" class="container">
+    <p>溫度: {{ temperature }} 攝氏度 </p>
+    <p>建議您穿: {{ dress }}</p>
+    <p>
+      <button @click="increment">increment</button>
+      <button @click="decrement">decrement</button>
+    </p>
+  </div>
+  <hr>
   <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
   <script src="./index.js"></script>
 </body>

@@ -425,3 +425,31 @@ new Vue({
     }
   }
 })
+
+let dress = ['短袖短褲', '夾克', '羽絨服']
+new Vue({
+  el: '#app18',
+  data: {
+    temperature: 18,
+    dress: dress[1]
+  },
+  methods: {
+    increment: function(){
+      this.temperature+=5
+    },
+    decrement: function(){
+      this.temperature-=5
+    }
+  },
+  watch: {
+    temperature: function(newVal){
+      if (newVal > 27) {
+        this.dress = dress[0]
+      } else if (newVal <= 27 && newVal >= 0) {
+        this.dress = dress[1]
+      } else {
+        this.dress = dress[2]
+      }
+    }
+  },
+})
