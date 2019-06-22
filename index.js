@@ -475,3 +475,32 @@ new Vue({
   },
   mixins: [updateValue]
 })
+
+let showCase = Vue.extend({
+  template:`<p>{{msg}}</p>`,
+  data: function(){
+    return {
+      msg: "你好! 世界"
+    }
+  },
+  mounted() {
+    console.log('APP20實例被創建');
+  },
+  destroyed: function(){
+    console.log('APP20實例已被銷毀');
+  },
+  updated() {
+    console.log('APP20已被更新');
+  },
+})
+function destroy() {
+  vm.$destroy()
+}
+function reload() {
+  vm.$forceUpdate()
+}
+function nextTick() {
+  vm.msg = '改變msg的值'
+  vm.$nextTick(()=>console.log('app20已經觸發nextTick'))
+}
+let vm = new showCase().$mount('show-case')

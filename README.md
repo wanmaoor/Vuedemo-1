@@ -17,3 +17,8 @@
 - 計算屬性
 - `watch`屬性
 - `Mixins`
+- 實例方法
+  - `$mount()`
+  - `$destroy()`
+  - `$forceUpdate()`
+  - `$nextTick()`

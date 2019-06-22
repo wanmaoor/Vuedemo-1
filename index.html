@@ -133,7 +133,7 @@
   <hr>
 
   <span class="title">APP9:</span>
-  <P>要顯示ap9需要把isVisble改爲true</P>
+  <P>要顯示app9需要把isVisble改爲true</P>
   <div id="app9" class="container" v-show="isVisible">
     <complex-modal @close="close">
       <template slot="header">My Title</template>
@@ -229,7 +229,15 @@
     <button @click="add">add</button>
   </div>
   <hr>
-  
+  <span class="title">APP20:</span>
+  <h1>實例方法</h1>
+  <div id="app20" class="container">
+    <show-case></show-case>
+    <button onclick="destroy()">銷毀</button>
+    <button onclick="reload()">刷新</button>
+    <button onclick="nextTick()">更改數據</button>
+  </div>
+  <hr>
   <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
   <script src="./index.js"></script>
 </body>
