@@ -453,3 +453,21 @@ new Vue({
     }
   },
 })
+
+let updateValue = {
+  updated() {
+    console.log(`你已經觸發了更新, 其值為${this.num}`)
+  },
+}
+new Vue({
+  el: '#app19',
+  data: {
+    num: 0
+  },
+  methods: {
+    add: function(){
+      this.num++
+    }
+  },
+  mixins: [updateValue]
+})
