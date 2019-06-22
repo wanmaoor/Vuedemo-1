@@ -454,6 +454,7 @@ new Vue({
   },
 })
 
+Vue.mixin({updated(){console.log('我是全局的Mixin, 我是最先執行的')}})
 let updateValue = {
   updated() {
     console.log(`你已經觸發了更新, 其值為${this.num}`)
